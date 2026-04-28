@@ -51,6 +51,9 @@ const enHref = altLangHref ?? '/en/';
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  {activePage === 'home' && (
+    <link rel="preload" as="image" href="/logo/logo-volledig.webp" fetchpriority="high" />
+  )}
 </head>
 <body>
   <div class="site-wrapper">

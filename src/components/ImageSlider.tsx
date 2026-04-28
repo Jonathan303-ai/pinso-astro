@@ -27,7 +27,14 @@ export default function ImageSlider({ slides, interval = 4000 }: Props) {
     <div className="slider-wrapper">
       {slides.map((slide, i) => (
         <div key={i} className={`slider-slide${i === current ? ' active' : ''}`}>
-          <img src={slide.src} alt={slide.alt} />
+          <img
+            src={slide.src}
+            alt={slide.alt}
+            width={1120}
+            height={560}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchPriority={i === 0 ? 'high' : 'low'}
+          />
           {slide.caption && (
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0,
