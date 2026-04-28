@@ -1,0 +1,86 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Sidebar from '../../../components/Sidebar.astro';
+
+const news = [
+  {
+    title: 'MEESTERBAKKER VAN IERSEL CHOOSE FOR KORNFEIL',
+    date: '02-15-2016',
+    img: '/images/karrenoven-olie-e1455572698990.jpg',
+    excerpt: 'For more than 20 years, the baker has produced his bread within a tunneloven. MEESTERBAKKER VAN IERSEL KIEST VOOR SOEPELHEID.',
+    href: '/en/news/meesterbakker-van-iersel/',
+  },
+  {
+    title: 'ACQUISITION COMPANY BAKKERIJTECHNIEK bvba',
+    date: '04-7-2014',
+    img: '/images/BEWERKT-LOGO-BAKKERIJTECHNIEK1-e1396855637391.jpg',
+    excerpt: 'Former success formula is the basis for a golden future. BT TECHNIEK, IMMOCON and PINSO BENELUX, all well-known suppliers...',
+    href: '/en/news/acquisition-bakkerijtechniek/',
+  },
+  {
+    title: 'EXCLUSIVE COOPERATION BETWEEN KORNFEIL OVENS AND PINSO BENELUX',
+    date: '12-18-2013',
+    img: '/images/olie-ovenskornfeil-met-lader-e1387363211281.jpg',
+    excerpt: 'ANTWERP – CEJC. After a thorough analysis of the bakery industry in the Benelux countries, detailed discussions with...',
+    href: '/en/news/cooperation-kornfeil-pinso/',
+  },
+  {
+    title: 'NEW THERMICAL OILOVEN TO BE USED WITH STONEPLATES AND RACKS',
+    date: '12-2-2013',
+    img: '/images/karrenoven-olie-e1455572698990.jpg',
+    excerpt: 'KACHTEM, Ruben Cools a talented baker from West Flanders, decided after a thoughtful selection...',
+    href: '/en/news/new-thermal-oil-oven/',
+  },
+  {
+    title: 'NEW FASTFOOD CONCEPT : FRESH24',
+    date: '11-7-2013',
+    img: '/images/IMG_00000797-e1387363390631.jpg',
+    excerpt: 'CRUX LA VILLE. At the request of our client Mister Logan Cabretta, PINSO BENELUX developed this new concept...',
+    href: '/en/news/new-fastfood-concept-fresh24/',
+  },
+  {
+    title: 'Sales and support for THERMICAL OILOVEN in Smits Bakery Vosselaar',
+    date: '10-23-2013',
+    img: '/images/DEEGSTUKKEN-SMITS-VOSSELAAR.jpg',
+    excerpt: 'VOSSELAAR. Bakker Smits convinced and professional baker decided...',
+    href: '/en/news/thermical-oiloven-smits-bakery/',
+  },
+  {
+    title: 'Start up new products at an industrial bakery Patisnack France',
+    date: '10-10-2013',
+    img: '/images/IMG_00000156-e1381349510545.jpg',
+    excerpt: 'Developing new products for the bakery is not so easy. Market research on potential returns, new product development and...',
+    href: '/en/news/new-products-industrial-bakery/',
+  },
+];
+---
+
+<Layout title="Latest news" lang="en" activePage="news" altLangHref="/nieuws/">
+  <div class="page-intro">
+    <h1>Latest news</h1>
+  </div>
+
+  <div class="content-area">
+    <main class="main-content entry anim-up">
+      <div class="breadcrumbs">
+        <a href="/en/">Home</a><span class="sep">/</span><span>Latest news</span>
+      </div>
+
+      <div class="news-grid">
+        {news.map(item => (
+          <article class="news-card">
+            <img src={item.img} alt={item.title} />
+            <div class="news-card-body">
+              <a href={item.href} class="news-card-title">{item.title}</a>
+              <div class="news-card-meta">{item.date}</div>
+              <p class="news-card-excerpt">{item.excerpt}</p>
+              <a href={item.href} class="read-more">Read more →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+
+    <Sidebar lang="en" activePage="news" side="right" showLogo={true} />
+  </div>
+</Layout>

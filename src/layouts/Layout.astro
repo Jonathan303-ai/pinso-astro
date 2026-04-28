@@ -1,0 +1,169 @@
+---
+import '../styles/global.css';
+
+interface NavItem {
+  href: string;
+  label: string;
+  key: string;
+}
+
+interface Props {
+  title: string;
+  lang: 'nl' | 'en';
+  activePage?: string;
+  altLangHref?: string;
+}
+
+const { title, lang, activePage, altLangHref } = Astro.props;
+
+const navNL: NavItem[] = [
+  { href: '/product/', label: 'Product', key: 'product' },
+  { href: '/innovatie/', label: 'Innovatie', key: 'innovatie' },
+  { href: '/onderhandeling/', label: 'Onderhandeling', key: 'onderhandeling' },
+  { href: '/verkoop/', label: 'Verkoop', key: 'verkoop' },
+  { href: '/organisatie/', label: 'Organisatie', key: 'organisatie' },
+  { href: '/nieuws/', label: 'Nieuws', key: 'nieuws' },
+  { href: '/contact/', label: 'Contact', key: 'contact' },
+];
+
+const navEN: NavItem[] = [
+  { href: '/en/product/', label: 'Product', key: 'product' },
+  { href: '/en/innovation/', label: 'Innovation', key: 'innovation' },
+  { href: '/en/negotiation/', label: 'Negotiation', key: 'negotiation' },
+  { href: '/en/sales/', label: 'Sales', key: 'sales' },
+  { href: '/en/organisation/', label: 'Organisation', key: 'organisation' },
+  { href: '/en/news/', label: 'Latest news', key: 'news' },
+  { href: '/en/contact/', label: 'Contact us', key: 'contact' },
+];
+
+const nav = lang === 'nl' ? navNL : navEN;
+const homeHref = lang === 'nl' ? '/' : '/en/';
+const nlHref = altLangHref ?? '/';
+const enHref = altLangHref ?? '/en/';
+---
+
+<!doctype html>
+<html lang={lang === 'nl' ? 'nl-BE' : 'en-US'}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Pinso - Benelux</title>
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</head>
+<body>
+  <div class="site-wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="site-logo">
+          <a href={homeHref} rel="home">
+            <img src="/logo/pinsobenelux-klein.png" alt="Pinso Benelux" style="max-height:60px; width:auto; display:block;" />
+          </a>
+        </div>
+        <div class="lang-switcher">
+          <a href={lang === 'en' ? nlHref : '/'} class={lang === 'nl' ? 'lang-active' : ''} title="Nederlands">
+            <img class="flag-img" src="/images/belgische-vlag.svg" alt="Belgische vlag" />
+            NL
+          </a>
+          <a href={lang === 'nl' ? enHref : '/en/'} class={lang === 'en' ? 'lang-active' : ''} title="English">
+            <img class="flag-img" src="/images/britse-vlag.svg" alt="British flag" />
+            EN
+          </a>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          {nav.map(item => (
+            <li class={activePage === item.key ? 'nav-active' : ''}>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Page content -->
+    <slot />
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <h4 class="footer-widget-title">
+            {lang === 'nl' ? 'WE HEBBEN RUIME ERVARING IN' : 'WE HAVE A LARGE EXPERIENCE IN'}
+          </h4>
+          <ul class="footer-list">
+            {lang === 'nl' ? (
+              <>
+                <li>• (Her)organisatie van bedrijven.</li>
+                <li>• Verkoop van producten/diensten aan derden (directe verkoop).</li>
+                <li>• Verkoopstraining en motivatie van verkopers (B2B).</li>
+                <li>• Herpositionering van bedrijven en/of afdelingen.</li>
+                <li>• Ontwikkeling van voedselbegrippen.</li>
+                <li>• Productinnovatie.</li>
+                <li>• Productontwikkeling.</li>
+                <li>• Productplaatsing, productintroductie, concept.</li>
+                <li>• (Her)organisatie binnen productie en administratie.</li>
+                <li>• Directe verkoop, verkoop (interim).</li>
+                <li>• En nog vele anderen.</li>
+              </>
+            ) : (
+              <>
+                <li>• (Re) Organisation of companies.</li>
+                <li>• Selling products / services to third parties (direct sales).</li>
+                <li>• Sales Training and motivation of sellers (B2B).</li>
+                <li>• Repositioning of companies and / or departments.</li>
+                <li>• Development of food concepts.</li>
+                <li>• Product innovation.</li>
+                <li>• Product development.</li>
+                <li>• Product Placement, product introduction, Concept.</li>
+                <li>• (Re) Organization within production and administration.</li>
+                <li>• Direct sales, sales (interim).</li>
+                <li>• And many others.</li>
+              </>
+            )}
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-widget-title">
+            {lang === 'nl' ? 'VEELGESTELDE VRAGEN' : 'FREQUENTLY ASKED QUESTIONS'}
+          </h4>
+          <ul class="footer-list">
+            {lang === 'nl' ? (
+              <>
+                <li><a href="mailto:info@pinso.be?subject=FAQ&body=Ik wil mijn verkoopteam herstructureren">• Ik wil mijn verkoopteam herstructureren</a></li>
+                <li><a href="mailto:info@pinso.be?subject=FAQ&body=Wie kan mijn verkopers een training geven">• Wie kan mijn verkopers een training geven</a></li>
+                <li><a href="mailto:info@pinso.be?subject=FAQ&body=Hoe ontwikkel ik een nieuw concept">• Hoe ontwikkel ik een nieuw concept</a></li>
+                <li><a href="mailto:info@pinso.be?subject=FAQ&body=Welke nieuwe producten kan ik produceren in mijn bakkerij">• Welke nieuwe producten kan ik produceren in mijn bakkerij</a></li>
+                <li><a href="mailto:info@pinso.be?subject=FAQ&body=Wie traint mijn productiepersoneel">• Wie traint mijn productiepersoneel</a></li>
+                <li><a href="mailto:info@pinso.be?subject=FAQ&body=Hoe kan ik de prestaties van mijn productie verbeteren">• Hoe kan ik de prestaties van mijn productie verbeteren</a></li>
+                <li><a href="mailto:info@pinso.be?subject=FAQ&body=Hoe positioneer ik mijn bedrijf of product">• Hoe positioneer ik mijn bedrijf / product</a></li>
+              </>
+            ) : (
+              <>
+                <li><a href="mailto:faqsinenglish@pinso.be?subject=Faqs&body=I want my sales team restructured">• I want my sales team restructured</a></li>
+                <li><a href="mailto:faqsinenglish@pinso.be?subject=Faqs&body=Who can give my sellers a training">• Who can give my sellers a training</a></li>
+                <li><a href="mailto:faqsinenglish@pinso.be?subject=Faqs&body=How do I develop a new concept">• How do I develop a new concept</a></li>
+                <li><a href="mailto:faqsinenglish@pinso.be?subject=Faqs&body=What new products can I produce in my bakery">• What new products can I produce in my bakery</a></li>
+                <li><a href="mailto:faqsinenglish@pinso.be?subject=Faqs&body=Who will train my production staff">• Who will train my production staff</a></li>
+                <li><a href="mailto:faqsinenglish@pinso.be?subject=Faqs&body=How can I improve the performance of my production">• How can I improve the performance of my production</a></li>
+                <li><a href="mailto:faqsinenglish@pinso.be?subject=Faqs&body=How do I position my company or product">• How do I position my company / product</a></li>
+              </>
+            )}
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a href={lang === 'nl' ? '/privacybeleid/' : '/privacy-policy/'}>
+          {lang === 'nl' ? 'Privacybeleid' : 'Privacy Policy'}
+        </a>
+        &nbsp;|&nbsp; &copy; {new Date().getFullYear()} Pinso Benelux bvba
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

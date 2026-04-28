@@ -1,0 +1,117 @@
+---
+interface Props {
+  lang: 'nl' | 'en';
+  activePage?: string;
+  side?: 'left' | 'right';
+  showLogo?: boolean;
+}
+
+const { lang, activePage, side = 'left', showLogo = false } = Astro.props;
+
+const recentPosts = [
+  {
+    href: lang === 'nl' ? '/nieuws/meesterbakker-van-iersel/' : '/en/news/meesterbakker-van-iersel/',
+    title: 'MEESTERBAKKER VAN IERSEL KIEST VOOR KORNFEIL',
+    titleEN: 'MEESTERBAKKER VAN IERSEL CHOOSE FOR KORNFEIL',
+    img: '/images/karrenoven-olie-e1455572698990.jpg',
+    alt: 'Thermische olie oven',
+    date: '15-02-2016',
+  },
+  {
+    href: lang === 'nl' ? '/nieuws/overname-bakkerijtechniek/' : '/en/news/acquisition-bakkerijtechniek/',
+    title: 'OVERNAME BEDRIJF BAKKERIJTECHNIEK bvba',
+    titleEN: 'ACQUISITION COMPANY BAKKERIJTECHNIEK bvba',
+    img: '/images/BEWERKT-LOGO-BAKKERIJTECHNIEK1-e1396855637391.jpg',
+    alt: 'Bakkerijtechniek',
+    date: '07-04-2014',
+  },
+  {
+    href: lang === 'nl' ? '/nieuws/samenwerking-kornfeil-pinso/' : '/en/news/cooperation-kornfeil-pinso/',
+    title: 'EXCLUSIEVE SAMENWERKING KORNFEIL OVENS EN PINSO BENELUX',
+    titleEN: 'EXCLUSIVE COOPERATION BETWEEN KORNFEIL OVENS AND PINSO BENELUX',
+    img: '/images/olie-ovenskornfeil-met-lader-e1387363211281.jpg',
+    alt: 'Kornfeil ovens',
+    date: '18-12-2013',
+  },
+];
+
+const navNL = [
+  { href: '/product/', label: 'Product', key: 'product' },
+  { href: '/innovatie/', label: 'Innovatie', key: 'innovatie' },
+  { href: '/onderhandeling/', label: 'Onderhandeling', key: 'onderhandeling' },
+  { href: '/verkoop/', label: 'Verkoop', key: 'verkoop' },
+  { href: '/organisatie/', label: 'Organisatie', key: 'organisatie' },
+  { href: '/nieuws/', label: 'Nieuws', key: 'nieuws' },
+  { href: '/contact/', label: 'Contact', key: 'contact' },
+];
+
+const navEN = [
+  { href: '/en/product/', label: 'Product', key: 'product' },
+  { href: '/en/innovation/', label: 'Innovation', key: 'innovation' },
+  { href: '/en/negotiation/', label: 'Negotiation', key: 'negotiation' },
+  { href: '/en/sales/', label: 'Sales', key: 'sales' },
+  { href: '/en/organisation/', label: 'Organisation', key: 'organisation' },
+  { href: '/en/news/', label: 'Latest news', key: 'news' },
+  { href: '/en/contact/', label: 'Contact us', key: 'contact' },
+];
+
+const nav = lang === 'nl' ? navNL : navEN;
+---
+
+<aside class={`sidebar sidebar-${side}`}>
+  {showLogo && (
+    <div class="widget" style="text-align:center; margin-bottom: 16px;">
+      <img src="/logo/pinsobenelux-klein.png" alt="Pinso Benelux" style="max-width:160px; height:auto;" />
+    </div>
+  )}
+
+  <!-- Recent posts -->
+  <div class="widget">
+    <h4 class="widget-title">{lang === 'nl' ? 'Recente berichten' : 'Recent Posts'}</h4>
+    <ul class="recent-posts">
+      {recentPosts.map(post => (
+        <li class="recent-post">
+          <a href={post.href}>
+            <img class="recent-post-thumb" src={post.img} alt={post.alt} />
+          </a>
+          <div>
+            <a href={post.href} class="recent-post-title">
+              {lang === 'nl' ? post.title : post.titleEN}
+            </a>
+            <span class="recent-post-date">{post.date}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Jump to nav -->
+  <div class="widget jump-nav">
+    <h4 class="widget-title">{lang === 'nl' ? 'Ga naar:' : 'Jump to:'}</h4>
+    <ul>
+      {nav.map(item => (
+        <li class={activePage === item.key ? 'active' : ''}>
+          <a href={item.href}>{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- External links -->
+  <div class="widget">
+    <h4 class="widget-title">{lang === 'nl' ? 'Externe links' : 'External links'}</h4>
+    <p style="font-size:11px; color:#777; margin-bottom: 8px;">
+      {lang === 'nl' ? 'Bekijk ook onze partnersites!' : 'Also take a look at our partner sites!'}
+    </p>
+    <div class="ext-links">
+<a href="http://www.iliam.be" target="_blank" rel="noopener">
+        <img src="https://www.pinso.be/en/files/2013/08/button-illiam.jpg" alt="iliam.be" width="150" height="40"
+          onerror="this.parentElement.innerHTML='<span style=\'font-size:11px; color:#2c5282;\'>iliam.be</span>'" />
+      </a>
+      <a href="http://www.eurofours.com" target="_blank" rel="noopener">
+        <img src="https://www.pinso.be/wp-content/uploads/2013/07/buttoneurofours.jpg" alt="eurofours.com" width="150" height="40"
+          onerror="this.parentElement.innerHTML='<span style=\'font-size:11px; color:#2c5282;\'>eurofours.com</span>'" />
+      </a>
+    </div>
+  </div>
+</aside>

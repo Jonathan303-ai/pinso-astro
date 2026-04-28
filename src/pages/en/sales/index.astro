@@ -1,0 +1,58 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Sidebar from '../../../components/Sidebar.astro';
+---
+
+<Layout title="Sales" lang="en" activePage="sales" altLangHref="/verkoop/">
+  <div class="page-intro">
+    <h1>Sales</h1>
+    <div class="intro-images">
+      <img src="/images/product-placement-bakkerijtechniek.jpg" alt="Product placement" />
+      <img src="/images/heuft-ovens.jpg" alt="Heuft ovens" />
+      <img src="/images/bakkerijproducten-netwerk.jpg" alt="Bakery network" />
+    </div>
+  </div>
+
+  <div class="content-area">
+    <main class="main-content entry anim-up">
+      <div class="breadcrumbs">
+        <a href="/en/">Home</a><span class="sep">/</span><span>Sales</span>
+      </div>
+
+      <div class="colored-box">
+        <p style="text-align:justify;">After producing, sales and presentation remain the core business within your company. Producing a solid product does no longer guarantee your success. Terms such as product placement, Marketing, Pricing, market approach, sales strategy and market analysis are a few of the words used while running a successful sales department. Many companies invest large budgets for motivating their salespeople. However, on motivation only you can't achieve the requested added value. Selling is a mix of: knowledge of the product, how it helps your customer and competition. A well trained salesman helps you to increase your sales and profitable margin.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <img src="/images/product-placement-bakkerijtechniek.jpg" alt="Clothing sales" class="shadow-img" style="display:block; margin:0 auto 14px; max-width:550px; width:100%; border-radius:2px;" />
+
+      <h5>PINSO HAS A WIDE EXPERIENCE IN THE CLOTHING INDUSTRY</h5>
+      <p style="text-align:justify;">We can offer you the solution, appropriate education and training of sales, staff and vendors working in this branches. All of this through our network of experts, whether you are looking for interim Managers or permanent staff. A well-trained employee gives confidence to customers by providing them with the best possible advice in the best possible way.</p>
+
+      <div class="divider"></div>
+
+      <h5>PINSO HAS EXPERIENCE WITH SALE OF TECHNOLOGY FOR PRODUCTION COMPANIES IN THE FOOD BUSINESS</h5>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:12px 0;">
+        <div style="text-align:center;">
+          <img src="/images/product-placement.jpg" alt="Product placement" class="shadow-img" style="width:100%; border-radius:2px;" />
+        </div>
+        <p style="text-align:justify;">Analyzing a need within the market of your customer is the "key to success". When selling technology within a BtoB environment, saving energy, production capacity and the required space are playing a more important role. A knowledgeable seller who also has the right sales techniques could succeed in achieving the goals set in advance. We help your vendors by teaching them how to make a defined analysis and to adapt their sales strategy.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div>
+          <h5>PINSO DIRECT SALES AND INTERIM SELLERS</h5>
+          <div style="margin:10px 0; text-align:center;">
+            <img src="/images/interimverkoper.jpg" alt="Interim seller" class="shadow-img" style="width:100%; border-radius:2px;" />
+          </div>
+        </div>
+        <p style="text-align:justify; padding-top:30px;">How to penetrate in a new market with a new product. Sometimes it is wiser to keep the existing team of sales within the current region and setting up a temporary sales department within a new industry or region. This will minimize the risk of loss in sales for the older product, segment or region. As long as you are uncertain about the success you can achieve we can help you to manage the budget by sending you HQ interim vendors.</p>
+      </div>
+    </main>
+
+    <Sidebar lang="en" activePage="sales" side="left" showLogo={true} />
+  </div>
+</Layout>

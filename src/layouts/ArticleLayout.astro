@@ -1,0 +1,52 @@
+---
+import Layout from './Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+
+interface Props {
+  title: string;
+  lang: 'nl' | 'en';
+  date: string;
+  img: string;
+  imgAlt: string;
+  altLangHref: string;
+}
+
+const { title, lang, date, img, imgAlt, altLangHref } = Astro.props;
+const backHref = lang === 'nl' ? '/nieuws/' : '/en/news/';
+const backLabel = lang === 'nl' ? '← Terug naar nieuws' : '← Back to news';
+---
+
+<Layout title={title} lang={lang} activePage={lang === 'nl' ? 'nieuws' : 'news'} altLangHref={altLangHref}>
+  <div class="page-intro">
+    <h1>{title}</h1>
+  </div>
+
+  <div class="content-area">
+    <main class="main-content entry anim-up">
+      <div class="breadcrumbs">
+        <a href={lang === 'nl' ? '/' : '/en/'}>Home</a>
+        <span class="sep">/</span>
+        <a href={backHref}>{lang === 'nl' ? 'Nieuws' : 'News'}</a>
+        <span class="sep">/</span>
+        <span>{title}</span>
+      </div>
+
+      <p style="font-size:11px; color:#999; margin-bottom:16px;">{date}</p>
+
+      <img
+        src={img}
+        alt={imgAlt}
+        style="width:100%; max-height:360px; object-fit:cover; border-radius:3px; margin-bottom:20px;"
+      />
+
+      <slot />
+
+      <div class="divider" style="margin-top:24px;"></div>
+      <a href={backHref} style="font-size:12px; color:#2c5282; text-decoration:none; font-weight:600;">
+        {backLabel}
+      </a>
+    </main>
+
+    <Sidebar lang={lang} activePage={lang === 'nl' ? 'nieuws' : 'news'} side="left" showLogo={true} />
+  </div>
+</Layout>

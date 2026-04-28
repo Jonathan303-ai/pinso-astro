@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import ImageSlider from '../../components/ImageSlider';
+import TabsVertical from '../../components/TabsVertical';
+
+const slides = [
+  { src: '/logo/logo-volledig.png', alt: 'Pinso Benelux', caption: 'Direct Sales' },
+  { src: '/images/bakkerij-ovens.jpg', alt: 'Bakery equipment', caption: 'Bakery Equipment' },
+  { src: '/images/ovens-bakkerij.jpg', alt: 'Food concepts and presentation', caption: 'Food Concepts and Presentation' },
+  { src: '/images/bakkerijovens.jpg', alt: 'Ovens', caption: 'Ovens' },
+  { src: '/images/image002-3.jpg', alt: 'Automated production lines', caption: 'Automated Production Lines' },
+];
+
+const tabs = [
+  {
+    label: 'PRODUCT PLACEMENT & PRODUCT DEVELOPMENT',
+    imgSrc: '/images/product-placement.jpg',
+    imgAlt: 'Product placement',
+    content: 'And then you have found it, the best idea "ever". Could this be sufficient helping you building on a successful future for your company? Coming up with the most perfect product does not always give you this guarantee. A lot is depending on how you will launch your new product, the region you will choose or even when you will launch your new product or service. All of those can be crucial to the success that you can achieve. Pinso can help you to make the best choice, so that your best idea becomes a GOLDEN idea.',
+  },
+  {
+    label: 'TRAINING OF SALESPEOPLE, DIRECT SALES',
+    imgSrc: '/images/product-placement-bakkerijtechniek.jpg',
+    imgAlt: 'Bakery technology training',
+    content: 'In a competitive environment it is important that you stay focused. A good seller starts working before his competitors are at work and only stops working when others are sleeping for quite some time. Unfortunately being active is not enough to become successful in sales. Sales strategy, sales techniques and motivation combined with the right product can help the sales department to grow. Pinso believes more in a personal training (buddy-sales) for your seller than in a general sales training. During our training we train your sales peoples selling "their" own product which improves their level of motivation.',
+  },
+  {
+    label: 'TRAINING OF ADMINISTRATIVE STAFF',
+    imgSrc: '/images/interimverkoper.jpg',
+    imgAlt: 'Administration training',
+    content: 'Did you know that the success of a company not only depends on your external employees? Selling and delivering your orders are all issues asking a lot of administrative actions. Even though you have the best product and the best sellers, your administrative staff will need to ensure that your customers are coming back for a next sale after receiving the first order. After the sale of your product every detail becomes important. Communication, initiative, responsibility and the right actions provide a good rapport with your customers and a higher profitable margin.',
+  },
+  {
+    label: 'TRAINING OF PRODUCTION WORKERS',
+    imgSrc: '/images/image005-1.jpg',
+    imgAlt: 'Production training',
+    content: 'Selling is one, producing is another. The success of a company depends on the quality and originality of its products, the services and the quality of your sellers. For this reason we can not forget the production department. A fine tuning of the production process belongs to one of the priorities within a company. A new product, a reorganization or simply boost the quality of your end product. Pinso helps you to implement the required changes within the production.',
+  },
+];
+---
+
+<Layout title="Welcome" lang="en" activePage="home" altLangHref="/">
+
+  <!-- Homepage slider -->
+  <ImageSlider slides={slides} client:load />
+
+  <!-- Content area -->
+  <div class="content-area">
+    <main class="main-content">
+      <div class="titled-box anim-up" style="animation-delay:0.1s">
+        <div class="titled-box-header">What can we do for you?</div>
+        <div class="titled-box-content">
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+            <img src="/logo/pinsobenelux-klein.png" alt="Direct sales" style="width:200px; height:100px; object-fit:cover; border-radius:2px;" />
+            <img src="/images/bakkerij-ovens.jpg" alt="Bakery equipment" style="width:200px; height:100px; object-fit:cover; border-radius:2px;" />
+            <img src="/images/ovens-bakkerij.jpg" alt="Ovens" style="width:200px; height:100px; object-fit:cover; border-radius:2px;" />
+          </div>
+          <p style="text-align:justify; font-size:13px; color:#444; line-height:1.7;">
+            Pinso BENELUX is a Belgian company oriented on the Benelux and French market. A regional market with global players is asking for customization within your company. Through a strong collaboration with our external specialized partners we will help you to achieve your goals.
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <h1 style="font-family:'Philosopher',serif; font-size:20px; color:#1a365d; text-align:center; margin:14px 0 10px;">
+        In which we have experience?
+      </h1>
+      <div class="divider" style="margin-bottom:14px;"></div>
+
+      <div class="anim-up" style="animation-delay:0.2s">
+        <TabsVertical tabs={tabs} client:load />
+      </div>
+    </main>
+
+    <Sidebar lang="en" activePage="home" side="left" />
+  </div>
+
+</Layout>

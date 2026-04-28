@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import ImageSlider from '../components/ImageSlider';
+import TabsVertical from '../components/TabsVertical';
+
+const slides = [
+  { src: '/logo/logo-volledig.png', alt: 'Pinso Benelux', caption: 'Directe Verkoop' },
+  { src: '/images/bakkerij-ovens.jpg', alt: 'Bakkerij uitrusting', caption: 'Bakkerij-uitrusting' },
+  { src: '/images/ovens-bakkerij.jpg', alt: 'Concepten en presentatie', caption: 'Voedselbegrippen en Presentatie' },
+  { src: '/images/bakkerijovens.jpg', alt: 'Ovens', caption: 'Ovens' },
+  { src: '/images/image002-3.jpg', alt: 'Geautomatiseerde productielijnen', caption: 'Geautomatiseerde Productielijnen' },
+];
+
+const tabs = [
+  {
+    label: 'PRODUCTPLAATSING & PRODUCTONTWIKKELING',
+    imgSrc: '/images/product-placement.jpg',
+    imgAlt: 'Productplaatsing',
+    content: 'En dan heeft u het gevonden, het beste idee "ooit". Kan dit voldoende zijn om een succesvolle toekomst voor uw bedrijf te garanderen? Het bedenken van het meest perfecte product geeft u niet altijd deze garantie. Veel hangt af van hoe u uw nieuw product lanceert, de regio die u kiest of zelfs wanneer u uw nieuw product of dienst lanceert. Al deze factoren kunnen cruciaal zijn voor het succes dat u kunt bereiken. Pinso kan u helpen de beste keuze te maken, zodat uw beste idee een GOUDEN idee wordt.',
+  },
+  {
+    label: 'TRAINING VAN VERKOPERS, DIRECTE VERKOOP',
+    imgSrc: '/images/product-placement-bakkerijtechniek.jpg',
+    imgAlt: 'Bakkerijtechniek training',
+    content: 'In een competitieve omgeving is het belangrijk dat u gefocust blijft. Een goede verkoper begint te werken voordat zijn concurrenten op het werk zijn en stopt pas als anderen al lang slapen. Helaas is actief zijn niet genoeg om succesvol te zijn in de verkoop. Verkoopstrategie, verkooptechnieken en motivatie gecombineerd met het juiste product kunnen de verkoopafdeling helpen groeien. Pinso gelooft meer in een persoonlijke training (buddy-sales) voor uw verkoper dan in een algemene verkooptraining. Tijdens onze training (buddy sales) trainen we uw verkooppersoneel in het verkopen van "hun" eigen product, wat hun motivatieniveau verbetert en hen comfortabeler maakt in hun bedrijf.',
+  },
+  {
+    label: 'TRAINING VAN ADMINISTRATIEF PERSONEEL',
+    imgSrc: '/images/interimverkoper.jpg',
+    imgAlt: 'Administratie training',
+    content: 'Wist u dat het succes van een bedrijf niet alleen afhangt van uw externe medewerkers? Het verkopen en leveren van uw bestellingen vergt veel administratieve handelingen. Zelfs als u het beste product en de beste verkopers heeft, moet uw administratief personeel ervoor zorgen dat uw klanten terugkomen voor een volgende verkoop na ontvangst van de eerste bestelling. Na de verkoop van uw product wordt elk detail belangrijk. De beloften die eerder door uw verkoper zijn gedaan, moeten nu zorgvuldig worden nagekomen. Communicatie, initiatief, verantwoordelijkheid en de juiste acties zorgen voor een goede relatie met uw klanten.',
+  },
+  {
+    label: 'TRAINING VAN PRODUCTIEMEDEWERKERS',
+    imgSrc: '/images/image005-1.jpg',
+    imgAlt: 'Productietraining',
+    content: 'Verkopen is één ding, produceren is een ander. Het succes van een bedrijf hangt af van de kwaliteit en originaliteit van zijn producten, de diensten en de kwaliteit van uw verkopers. Daarom kunnen we de productieafdeling niet vergeten. Een fine-tuning van het productieproces behoort tot één van de prioriteiten binnen een bedrijf. Een nieuw product, een reorganisatie of eenvoudigweg de kwaliteit van uw eindproduct verbeteren. Pinso helpt u de vereiste wijzigingen binnen de productie te implementeren.',
+  },
+];
+---
+
+<Layout title="Welkom" lang="nl" activePage="home" altLangHref="/en/">
+
+  <!-- Homepage slider -->
+  <div style="position: relative;">
+    <ImageSlider slides={slides} client:load />
+  </div>
+
+  <!-- Content area -->
+  <div class="content-area">
+    <main class="main-content">
+      <!-- Titled box with intro slider -->
+      <div class="titled-box anim-up" style="animation-delay:0.1s">
+        <div class="titled-box-header">Wat kunnen wij voor u doen?</div>
+        <div class="titled-box-content">
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+            <img src="/logo/pinsobenelux-klein.png" alt="Directe verkoop" style="width:200px; height:100px; object-fit:cover; border-radius:2px;" />
+            <img src="/images/bakkerij-ovens.jpg" alt="Bakkerij-uitrusting" style="width:200px; height:100px; object-fit:cover; border-radius:2px;" />
+            <img src="/images/ovens-bakkerij.jpg" alt="Ovens" style="width:200px; height:100px; object-fit:cover; border-radius:2px;" />
+          </div>
+          <p style="text-align:justify; font-size:13px; color:#444; line-height:1.7;">
+            Pinso BENELUX is een Belgisch bedrijf gericht op de Benelux- en Franse markt. Een regionale markt met mondiale spelers vraagt om maatwerk binnen uw bedrijf. Door een sterke samenwerking met onze externe gespecialiseerde partners helpen wij u uw doelen te bereiken.
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <h1 class="entry" style="font-family:'Philosopher',serif; font-size:20px; color:#1a365d; text-align:center; padding:0; margin:14px 0 10px;">
+        Waarin hebben wij ervaring?
+      </h1>
+      <div class="divider" style="margin-bottom:14px;"></div>
+
+      <!-- Vertical tabs -->
+      <div class="anim-up" style="animation-delay:0.2s">
+        <TabsVertical tabs={tabs} client:load />
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <Sidebar lang="nl" activePage="home" side="left" />
+  </div>
+
+</Layout>

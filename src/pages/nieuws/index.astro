@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+
+const nieuws = [
+  {
+    title: 'MEESTERBAKKER VAN IERSEL KIEST VOOR KORNFEIL',
+    date: '15-02-2016',
+    img: '/images/karrenoven-olie-e1455572698990.jpg',
+    excerpt: 'Al meer dan 20 jaar produceerde de bakker zijn brood in een tunneloven. MEESTERBAKKER VAN IERSEL KIEST VOOR SOEPELHEID.',
+    href: '/nieuws/meesterbakker-van-iersel/',
+  },
+  {
+    title: 'OVERNAME BEDRIJF BAKKERIJTECHNIEK bvba',
+    date: '07-04-2014',
+    img: '/images/BEWERKT-LOGO-BAKKERIJTECHNIEK1-e1396855637391.jpg',
+    excerpt: 'De vroegere succesformule is de basis voor een gouden toekomst. BT TECHNIEK, IMMOCON en PINSO BENELUX, allemaal bekende leveranciers...',
+    href: '/nieuws/overname-bakkerijtechniek/',
+  },
+  {
+    title: 'EXCLUSIEVE SAMENWERKING TUSSEN KORNFEIL OVENS EN PINSO BENELUX',
+    date: '18-12-2013',
+    img: '/images/olie-ovenskornfeil-met-lader-e1387363211281.jpg',
+    excerpt: 'ANTWERPEN – CEJC. Na een grondige analyse van de bakkerijsector in de Benelux-landen, gedetailleerde besprekingen met...',
+    href: '/nieuws/samenwerking-kornfeil-pinso/',
+  },
+  {
+    title: 'NIEUWE THERMISCHE OLIE-OVEN TE GEBRUIKEN MET STEENPLATEN EN REKKEN',
+    date: '02-12-2013',
+    img: '/images/karrenoven-olie-e1455572698990.jpg',
+    excerpt: 'KACHTEM, Ruben Cools, een getalenteerde bakker uit West-Vlaanderen, besloot na een doordachte selectie...',
+    href: '/nieuws/nieuwe-olie-oven/',
+  },
+  {
+    title: 'NIEUW FASTFOODCONCEPT: FRESH24',
+    date: '07-11-2013',
+    img: '/images/IMG_00000797-e1387363390631.jpg',
+    excerpt: 'CRUX LA VILLE. Op verzoek van onze klant Mijnheer Logan Cabretta heeft PINSO BENELUX en haar externe partners dit nieuwe concept ontwikkeld...',
+    href: '/nieuws/nieuw-fastfood-concept-fresh24/',
+  },
+  {
+    title: 'Verkoop en ondersteuning voor THERMISCHE OLIE-OVEN bij Bakkerij Smits Vosselaar',
+    date: '23-10-2013',
+    img: '/images/DEEGSTUKKEN-SMITS-VOSSELAAR.jpg',
+    excerpt: 'VOSSELAAR. Bakker Smits, overtuigde en professionele bakker, besloot...',
+    href: '/nieuws/thermische-olie-oven-smits-bakery/',
+  },
+  {
+    title: 'Opstarten nieuwe producten bij industriële bakkerij Patisnack Frankrijk',
+    date: '10-10-2013',
+    img: '/images/IMG_00000156-e1381349510545.jpg',
+    excerpt: 'Nieuwe producten ontwikkelen voor de bakkerij is niet zo eenvoudig. Marktonderzoek naar potentiële opbrengsten, nieuwe productontwikkeling en...',
+    href: '/nieuws/nieuwe-producten-industriele-bakkerij/',
+  },
+];
+---
+
+<Layout title="Nieuws" lang="nl" activePage="nieuws" altLangHref="/en/news/">
+  <div class="page-intro">
+    <h1>Nieuws</h1>
+  </div>
+
+  <div class="content-area">
+    <main class="main-content entry anim-up">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="sep">/</span><span>Nieuws</span>
+      </div>
+
+      <div class="news-grid">
+        {nieuws.map(item => (
+          <article class="news-card">
+            <img src={item.img} alt={item.title} />
+            <div class="news-card-body">
+              <a href={item.href} class="news-card-title">{item.title}</a>
+              <div class="news-card-meta">{item.date}</div>
+              <p class="news-card-excerpt">{item.excerpt}</p>
+              <a href={item.href} class="read-more">Lees meer →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+
+    <Sidebar lang="nl" activePage="nieuws" side="right" showLogo={true} />
+  </div>
+</Layout>
